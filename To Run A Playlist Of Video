@@ -1,0 +1,29 @@
+sudo apt update && sudo apt upgrade -y
+sudo apt install yt-dlp ffmpeg -y
+
+import subprocess
+import time
+
+#  List of Videos to see
+video_urls = [
+    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
+]  # Ajoute d'autres liens ici
+
+for youtube_url in video_urls:
+    print(f" Visionnage de {youtube_url}")
+
+    command_get_stream = ["yt-dlp", "-g", "-f", "best", youtube_url]
+
+    try:
+        video_stream_url = subprocess.check_output(command_get_stream).decode("utf-8").strip()
+
+        command_play = ["ffmpeg", "-re", "-i", video_stream_url, "-f", "null", "-"]
+
+        subprocess.run(command_play)
+
+    except Exception as e:
+        print(" Erreur :", e)
+
+    print(" Video Ended. Go to the next one...\n")
+    time.sleep(5)                                                                        # Break of 5 sec between each video
