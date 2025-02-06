@@ -96,3 +96,28 @@ print("Toutes les vidéos ont été vues ! ")
 # We retry with another one 
 
 ################################################################################################
+
+import time
+import subprocess
+
+# Liste des vidéos YouTube dans la playlist
+videos = [
+    "https://youtu.be/XQ0B0cjq1-U?si=Ay5ZF0si8LJbrZh_",
+    "https://youtu.be/XQ0B0cjq1-U?si=Ay5ZF0si8LJbrZh_"
+]
+
+# Fonction pour lancer Xvfb et lire la vidéo
+def play_video(video_url):
+    # Utilisation de Xvfb pour lancer mpv dans un environnement sans affichage
+    subprocess.run(["xvfb-run", "-a", "mpv", video_url])
+
+# Fonction principale pour gérer la playlist
+def play_playlist(videos):
+    for video in videos:
+        print(f"Lecture de : {video}")
+        play_video(video)
+        print("Vidéo terminée")
+
+if __name__ == "__main__":
+    play_playlist(videos)
+
