@@ -6,8 +6,8 @@ import time
 
 #  List of Videos to see
 video_urls = [
-    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
+    "https://youtube.com/shorts/2iQxQHF5fhw?si=Njg8h6bmm9ikJeYr",
+    "https://youtu.be/cpY_Fa6y2iI?si=saXnQHkK9Ui0ZxsC"
 ]  # Ajoute d'autres liens ici
 
 for youtube_url in video_urls:
