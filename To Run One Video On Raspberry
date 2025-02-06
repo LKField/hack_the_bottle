@@ -1,0 +1,38 @@
+
+sudo apt update && sudo apt upgrade -y                                     # Met à jour le système.
+sudo apt install yt-dlp ffmpeg -y                                           # Installe yt-dlp (Recuperate  flux vidéo) and ffmpeg (read the video without showing it).
+
+import subprocess
+
+#  URL of the vidéo YouTube 
+youtube_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"                            # Change the link 
+
+#  Command yt-dlp to recuperate the link of the video flux
+command_get_stream = [
+    "yt-dlp",
+    "-g",                                                                         # l'URL of flux vidéo
+    "-f", "best",                                                                 # taking the best quality of the video but maybe it’s not mandatory
+    youtube_url
+]
+
+try:
+    #  Exécute yt-dlp et recuperate l'URL du flux vidéo
+    video_stream_url = subprocess.check_output(command_get_stream).decode("utf-8").strip()
+
+    #  Command FFmpeg to read the vidéo en arrière-plan (without affichage and noise)
+    command_play = [
+        "ffmpeg",
+        "-re",         # Play it in real time
+        "-i", video_stream_url,         # Utilise l'URL du flux vidéo
+        "-f", "null",          # To product no things visible
+        "-"
+    ]
+
+    #  Run th vidéo (visionnage "invisible")
+    subprocess.run(command_play)
+
+except Exception as e:
+    print("Erreur :", e)
+
+
+python3 visionnage.py                                                     #  To run it, change the name of visionnage.py, it depends of our project
