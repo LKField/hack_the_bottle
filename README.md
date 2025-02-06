@@ -9,6 +9,7 @@ Originally we were using an ESP32 with Arduino, but have switched to using a Ras
 | File          | Purpose       | Current       |
 | ------------- | ------------- | ------------- |
 | publish2GSheet.py | Python for publishing data to a Google Sheet - contains update_sheet function | yes |
+| youtubeRecommends.py | Python for connecting to YouTube API                                       | yes |
 | HACK-WIFI-1.ino   | Arduino for listing YouTube videos                                            | no  |
 | Publish2Sheet_2_noAPI.ino     | Arduino for publishing data to a Google Sheet                     | no  |
 | To Run A Playlist Of Video    | ?? | ?  |
