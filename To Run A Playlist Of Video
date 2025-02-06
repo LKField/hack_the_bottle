@@ -31,3 +31,54 @@ for youtube_url in video_urls:
 
 nohup python3 visionnage.py &                                                                # Running the script even if you close the terminal
 
+############################################################################################################################################
+
+# The answer / The problem : ffmpeg doesnt work
+
+# So we change to mpv files
+
+# That doesn t work to
+
+# We tried to ask to see the video 18 = 360 fps to change the quality, because at the beginning we asked for worst quality
+
+# But it still doesn t work
+
+# The problem is from that we don t want to see the video so youtube block us and we can't see it like this 
+
+# That is the error message : 
+Visionnage de https://youtube.com/shorts/2iQxQHF5fhw?si=Njg8h6bmm9ikJeYr
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (1/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (2/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (3/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] Unable to download API page: HTTP Error 400: Bad Request (caused by <HTTPError 400: 'Bad Request'>); please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U
+WARNING: [youtube] 2iQxQHF5fhw: Signature extraction failed: Some formats may be missing
+WARNING: Only images are available for download. use --list-formats to see them
+ERROR: [youtube] 2iQxQHF5fhw: Requested format is not available. Use --list-formats for a list of available formats
+Erreur : Command '['yt-dlp', '-g', '-f', '18', 'https://youtube.com/shorts/2iQxQHF5fhw?si=Njg8h6bmm9ikJeYr']' returned non-zero exit status 1.
+Vidéo terminée. Passage à la suivante...
+
+Visionnage de https://youtu.be/cpY_Fa6y2iI?si=saXnQHkK9Ui0ZxsC
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (1/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (2/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] HTTP Error 400: Bad Request. Retrying (3/3)...
+WARNING: [youtube] YouTube said: ERROR - Precondition check failed.
+WARNING: [youtube] Unable to download API page: HTTP Error 400: Bad Request (caused by <HTTPError 400: 'Bad Request'>); please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U
+WARNING: [youtube] cpY_Fa6y2iI: nsig extraction failed: You may experience throttling for some formats
+         n = qn84G8T_TVmDjbxZ ; player = https://www.youtube.com/s/player/9c6dfc4a/player_ias.vflset/en_US/base.js
+WARNING: [youtube] cpY_Fa6y2iI: nsig extraction failed: You may experience throttling for some formats
+         n = kNnaV5uMR_KsefIo ; player = https://www.youtube.com/s/player/9c6dfc4a/player_ias.vflset/en_US/base.js
+URL du flux vidéo : https://rr3---sn-vg5obxn25po-cjo6.googlevideo.com/videoplayback?expire=1738866891&ei=a6ykZ620A-Pap-oPpMadwQ8&ip=90.160.207.85&id=o-AHn2HjzNuQRN5InAnwVst_UyfhOJ2S5qDhG07lCtLgBk&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738845291%2C&mh=8o&mm=31%2C29&mn=sn-vg5obxn25po-cjo6%2Csn-h5qzen7d&ms=au%2Crdu&mv=m&mvi=3&pl=24&rms=au%2Cau&initcwndbps=1888750&bui=AY2Et-Nb_g_xbAN1cggysT-8wVbEvup2p4jiH0Ta-GL8hjm_Tzs6bYnd--dFUBQreTvTbByqATu9Xh-w&spc=9kzgDS9eOm_w6VNFZ6fX5_pEw2lxO1dL3m6fene0gTNHmq7KJxBWgNV9i8KbERWclvpqDY0kpQ&vprv=1&svpuc=1&mime=video%2Fmp4&ns=CJAIFRGRzwp2sODFjoB-1fcQ&rqh=1&gir=yes&clen=7227370&ratebypass=yes&dur=115.054&lmt=1734633752077633&mt=1738844949&fvip=5&fexp=51326932%2C51355912%2C51371294&c=WEB&sefc=1&txp=4538434&n=qn84G8T_TVmDjbxZ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIhAKGqY2LsmqTnehn86pIRqxvp3zVCgocPHWLK3BnruLKcAiAgpnWFUYmoveKxbEECxAbrIYU5JwyOnih3B_2XUI4MXA%3D%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRgIhAKfEB3IfD-NZkR16mjZma-RO0Hr0U1ZUBS6ExyQpZpqdAiEAnvZnQfsVMvVrwUsLgAd-vcNU5kEYUdAV_ZOzK8RMl9Q%3D
+Error parsing option re (option not found)
+Setting commandline option --re= failed.
+Exiting... (Fatal error)
+Vidéo terminée. Passage à la suivante...
+
+
+
