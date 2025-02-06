@@ -27,3 +27,7 @@ for youtube_url in video_urls:
 
     print(" Video Ended. Go to the next one...\n")
     time.sleep(5)                                                                        # Break of 5 sec between each video
+
+
+nohup python3 visionnage.py &                                                                # Running the script even if you close the terminal
+
