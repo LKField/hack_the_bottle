@@ -3,7 +3,7 @@ import time
 import yt_dlp
 
 playlist = [
-    "https://youtube.com/shorts/2iQxQHF5fhw",
+    "https://youtu.be/zGUOU65cYhk?si=vA7hcj8xfdQVrIWY",
     "https://youtu.be/cpY_Fa6y2iI"
 ]
 
