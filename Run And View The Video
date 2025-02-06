@@ -86,3 +86,13 @@ for video in playlist:
     print("Video done ")
 
 print("Toutes les vidéos ont été vues ! ")
+
+############################################################################################
+
+# Ce code n'a pas fonctionné
+
+# Beaucoup de problèmes sont apparues du fait qu'il n'y a pas d'écran
+
+# We retry with another one 
+
+################################################################################################
