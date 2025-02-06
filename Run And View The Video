@@ -1,0 +1,39 @@
+import os
+import time
+import yt_dlp
+
+playlist = [
+    "https://youtube.com/shorts/2iQxQHF5fhw",
+    "https://youtu.be/cpY_Fa6y2iI"
+]
+
+def get_video_duration(video_url):
+    """ To recuperate the duration of the video """
+    ydl_opts = {
+        'quiet': True,
+        'no_warnings': True,
+        'format': 'best',
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(video_url, download=False)
+        return info.get("duration", 60)  # Par défaut, 60s si non trouvé
+
+for video in playlist:
+    print(f"Lecture de : {video}")
+
+    # Recuperate the duration
+    duration = get_video_duration(video)
+    print(f"Durée : {duration} secondes")
+
+    # Lancer Chromium en mode kiosque
+    os.system(f"chromium-browser --kiosk {video} &")
+
+    # Attendre la durée de la vidéo
+    time.sleep(duration)
+
+    # Fermer Chromium automatiquement
+    os.system("pkill chromium")
+
+    print("Video done ")
+
+print("Toutes les vidéos ont été vues ! ")
