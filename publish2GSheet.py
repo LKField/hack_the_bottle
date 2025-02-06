@@ -1,5 +1,6 @@
-# Code Source: http://www.whatimade.today/log-sensor-data-straight-to-google-sheets-from-a-raspberry-pi-zero-all-the-python-code/
 # Original Author: Allan Schwartz
+# Code Source: http://www.whatimade.today/log-sensor-data-straight-to-google-sheets-from-a-raspberry-pi-zero-all-the-python-code/
+
 # Modified by: Lucretia Field 
 
 # import many libraries
@@ -45,8 +46,7 @@ def update_sheet(sheetname="Sheet1", link="0", title="0", channel="0"):
 
 def main():  
     """main method:
-       reads the BME280 chip to read the three sensors, then
-       call update_sheets method to add that sensor data to the spreadsheet
+       call update_sheets method to link information to the spreadsheet
     """
     link = "https://www.youtube.com/watch?v=VD6xJq8NguY"
     title = "There Is Something Hiding Inside Earth"
