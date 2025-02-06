@@ -3,6 +3,9 @@
 
 # Modified by: Lucretia Field 
 
+# Requirements:
+# pip install --upgrade google-api-python-client oauth2client  
+
 # import many libraries
 from __future__ import print_function  
 from googleapiclient.discovery import build  
