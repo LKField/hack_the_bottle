@@ -13,7 +13,7 @@ video_urls = [
 for youtube_url in video_urls:
     print(f" Visionnage de {youtube_url}")
 
-    command_get_stream = ["yt-dlp", "-g", "-f", "best", youtube_url]
+    command_get_stream = ["yt-dlp", "-g", "-f", "worst", youtube_url]
 
     try:
         video_stream_url = subprocess.check_output(command_get_stream).decode("utf-8").strip()
