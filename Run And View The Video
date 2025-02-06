@@ -37,3 +37,52 @@ for video in playlist:
     print("Video done ")
 
 print("Toutes les vidéos ont été vues ! ")
+
+##############################################################################################""
+
+# That is the first problem : 
+Lecture de : https://youtu.be/XQ0B0cjq1-U?si=rmBpiCxwWHNrOSBy
+Durée : 75 secondes
+[3709:3709:0206/150502.728344:ERROR:ozone_platform_x11.cc(244)] Missing X server or $DISPLAY
+[3709:3709:0206/150502.728393:ERROR:env.cc(258)] The platform failed to initialize.  Exiting.
+Video done
+Lecture de : https://youtu.be/XQ0B0cjq1-U?si=rmBpiCxwWHNrOSBy
+Durée : 75 secondes
+[3752:3752:0206/150619.960647:ERROR:ozone_platform_x11.cc(244)] Missing X server or $DISPLAY
+[3752:3752:0206/150619.960709:ERROR:env.cc(258)] The platform failed to initialize.  Exiting.
+Video done
+Toutes les vidéos ont été vues !
+
+# Because we don't have grafic interface, we are just on SSH
+
+# So we will creat an virtual servor X with installing xvfb with this code : 
+
+sudo apt install xvfb
+
+# And we modify the code like this : 
+
+import os
+import time
+
+playlist = [
+    "https://youtu.be/XQ0B0cjq1-U?si=Ay5ZF0si8LJbrZh_",
+    "https://youtu.be/XQ0B0cjq1-U?si=Ay5ZF0si8LJbrZh_"
+]
+
+DEFAULT_DURATION = 60  # Temps d'attente par défaut (modifiable)
+
+for video in playlist:
+    print(f"Lecture de : {video}")
+
+    # Lancer Chromium avec un serveur X virtuel
+    os.system(f"xvfb-run --auto-servernum chromium-browser --kiosk {video} &")
+
+    # Attendre un temps défini (60s par défaut)
+    time.sleep(DEFAULT_DURATION)
+
+    # Fermer Chromium automatiquement
+    os.system("pkill chromium")
+
+    print("Video done ")
+
+print("Toutes les vidéos ont été vues ! ")
