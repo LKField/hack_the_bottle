@@ -12,6 +12,7 @@ from googleapiclient.discovery import build
 from httplib2 import Http  
 from oauth2client import file, client, tools  
 from oauth2client.service_account import ServiceAccountCredentials  
+import pandas as pd
 import datetime
 
 # My Spreadsheet ID ... See google documentation on how to derive this
@@ -19,7 +20,6 @@ MY_SPREADSHEET_ID = '1y0pz5SzXEUc4PvjJy_hvA48g36e0usQjLvp9BQxHJxs'
 
 # The ID for our specific device - used for if we have multiple devices 
 DEVICE_ID = "Lucretia"
-
 
 def update_sheet(sheetname="Sheet1", link="0", title="0", channel="0"):  
     """update_sheet method:
@@ -46,7 +46,7 @@ def update_sheet(sheetname="Sheet1", link="0", title="0", channel="0"):
                 insertDataOption='INSERT_ROWS',
                 body=body).execute()                     
 
-def get_values(sheetname="Sheet1"):
+def get_values(sheetname="Sheet1", range='!A2:E2'):
     """
     Creates the batch_update the user has access to.
     Load pre-authorized user credentials from the environment.
@@ -62,14 +62,26 @@ def get_values(sheetname="Sheet1"):
         service.spreadsheets()
         .values()
         .get(spreadsheetId=MY_SPREADSHEET_ID, 
-            range=sheetname + '!A2:E2')
+            range=sheetname + range)
         .execute()
     )
+
     rows = result.get("values", [])
-    print(f"{len(rows)} rows retrieved")
+    # print(f"{len(rows)} rows retrieved")
 
     return rows
 
+def make_df(df, row):
+    new_row = pd.DataFrame({'Date Time': row[0][0], 
+                            'Device ID': row[0][1], 
+                            'Video Link': row[0][2],
+                            'Video Name': row[0][3],
+                            'Channel Name': row[0][4]},
+                            index =[0])
+
+    df = pd.concat([new_row, df]).reset_index(drop = True)
+
+    return df
 
 def main():  
     """main method:
@@ -79,12 +91,26 @@ def main():
     title = "There Is Something Hiding Inside Earth"
     channel = "Kurzgesagt - In a Nutshell"
 
-    print ('Link: ', link)
+    data_strct = {'Date Time': {},
+              'Device ID': {},
+              'Video Link': {},
+              'Video Name': {},
+              'Channel Name': {}}
+
+    df = pd.DataFrame(data_strct)
+
+    """     print ('Link: ', link)
     print ('Title: ', title)
-    print ('Channel: ', channel)
+    print ('Channel: ', channel) """
+
     update_sheet("Sheet1", link, title, channel)
-    line = get_values()
-    print("Title:", line[0][3])
+    for i in range(2,20):
+        data_range = '!A' + str(i) + ':' + 'E' + str(i)
+        line = get_values(sheetname="Sheet1", range=data_range) 
+    #line = get_values()
+        df = make_df(df, line)
+
+    print(df)
 
 if __name__ == '__main__':  
     main()
