@@ -86,7 +86,5 @@ def main():
     line = get_values()
     print("Title:", line[0][3])
 
-
-
 if __name__ == '__main__':  
     main()

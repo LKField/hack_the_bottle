@@ -4,10 +4,12 @@ from publish2GSheet import update_sheet, get_values
 
 #  Liste des vidéos à lire (remplace ces liens par ceux de ton choix)
 video_playlist = [
-    "https://www.youtube.com/watch?v=XQ0B0cjq1-U",
-    "https://www.youtube.com/watch?v=dQw4w9WgXcQ", 
-    "https://www.youtube.com/watch?v=3JZ_D3ELwOQ"
+    ["https://www.youtube.com/watch?v=XQ0B0cjq1-U", "Enregistrement 2024 11 15 101321", "Auxence D"],
+    ["https://www.youtube.com/watch?v=dQw4w9WgXcQ", "Rick Astley - Never Gonna Give You Up (Official Music Video)", "Rick Astley"],
+    ["https://www.youtube.com/watch?v=VD6xJq8NguY", "There Is Something Hiding Inside Earth", "Kurzgesagt - In a Nutshell"]
 ]
+
+
 
 def get_video_url(youtube_url):
     """Utilise yt-dlp pour récupérer l'URL directe du flux vidéo."""
@@ -23,12 +25,12 @@ def get_video_url(youtube_url):
 
 def play_videos(video_urls):
     """Joue les vidéos une par une avec mpv."""
-    for url in video_urls:
+    for i in video_urls:
+        url = i[0]
+        title = i[1]
+        channel = i[2]
         print(f" Lecture de : {url}")
         video_stream_url = get_video_url(url)
-        info = get_values()
-        title = info[0][3]
-        channel = info[0][4]
         update_sheet("Sheet1", url, title, channel)
         if video_stream_url:
             subprocess.run([
@@ -45,3 +47,5 @@ if __name__ == "__main__":
     print(f" {len(video_playlist)} vidéos à lire.")
     play_videos(video_playlist)
     print(" Lecture terminée !")
+
+
