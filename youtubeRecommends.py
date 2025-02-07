@@ -4,6 +4,8 @@
 # See instructions for running these code samples locally:
 # https://developers.google.com/explorer-help/code-samples#python
 
+# THIS WILL NOT WORK AS IS ON THE PI - Requires access to website for verification (maybe as ssh this will be possible)
+
 import os
 
 import google_auth_oauthlib.flow
@@ -31,7 +33,7 @@ def main():
         api_service_name, api_version, credentials=credentials)
 
     request = youtube.activities().list(
-        part="snippet, contentDetails",
+        part="id, snippet, contentDetails",
         home=True
     )
     response = request.execute()

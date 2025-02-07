@@ -18,7 +18,7 @@ import datetime
 MY_SPREADSHEET_ID = '1y0pz5SzXEUc4PvjJy_hvA48g36e0usQjLvp9BQxHJxs'
 
 # The ID for our specific device - used for if we have multiple devices 
-DEVICE_ID = 0
+DEVICE_ID = "Lucretia"
 
 
 def update_sheet(sheetname="Sheet1", link="0", title="0", channel="0"):  
@@ -46,6 +46,30 @@ def update_sheet(sheetname="Sheet1", link="0", title="0", channel="0"):
                 insertDataOption='INSERT_ROWS',
                 body=body).execute()                     
 
+def get_values(sheetname="Sheet1"):
+    """
+    Creates the batch_update the user has access to.
+    Load pre-authorized user credentials from the environment.
+    TODO(developer) - See https://developers.google.com/identity
+    for guides on implementing OAuth2 for the application.
+    """
+    SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
+    creds = ServiceAccountCredentials.from_json_keyfile_name( 
+            'hack-the-bottle.json', SCOPES)
+    service = build('sheets', 'v4', http=creds.authorize(Http()))
+
+    result = (
+        service.spreadsheets()
+        .values()
+        .get(spreadsheetId=MY_SPREADSHEET_ID, 
+            range=sheetname + '!A2:E2')
+        .execute()
+    )
+    rows = result.get("values", [])
+    print(f"{len(rows)} rows retrieved")
+
+    return rows
+
 
 def main():  
     """main method:
@@ -59,6 +83,9 @@ def main():
     print ('Title: ', title)
     print ('Channel: ', channel)
     update_sheet("Sheet1", link, title, channel)
+    line = get_values()
+    print("Title:", line[0][3])
+
 
 
 if __name__ == '__main__':  
