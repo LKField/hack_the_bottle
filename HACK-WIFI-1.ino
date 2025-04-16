@@ -8,7 +8,7 @@ const char *ssid = "iPhone de Auxence";
 const char *password = "auxence2701";
 
 // Informations API YouTube
-const char* apiKey = "AIzaSyC2-4wQe7kjbdOdqxatX2A-t0XKkAD7zcY";
+const char* apiKey = "";
 const char* searchQuery = "cats";
 const int maxResults = 5;
 
