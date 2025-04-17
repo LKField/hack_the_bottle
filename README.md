@@ -17,7 +17,7 @@ Originally we were using an ESP32 with Arduino, but have switched to using a Ras
 
 
 ## Introduction
-In this project, we designed a device capable of endlessly streaming YouTube videos without displaying or playing any sound. The goal is to potentially influence the video recommendation algorithm for users connected to the same Wi-Fi network. This system is discreetly hidden inside a bottle to remain unnoticed in public spaces.
+In this project, we designed a device to endlessly stream YouTube videos without displaying or playing any sound. The goal is to potentially influence the video recommendation algorithm for users connected to the same Wi-Fi network. This system is discreetly hidden inside a bottle to remain unnoticed in public spaces.
 
 ## Objective
 The main goals of this project were:
